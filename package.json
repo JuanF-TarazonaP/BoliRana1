@@ -1,0 +1,88 @@
+{
+  "build": {
+    "appId": "com.github.ivanrey.Frosch",
+    "productName": "Frosch",
+    "artifactName": "${productName}-${os}.${ext}",
+    "asar": false,
+    "copyright": "Copyright © 2018 ${author}",
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "icon.icns",
+      "target": "dmg"
+    },
+    "linux": {
+      "artifactName": "${productName}-${os}-${arch}.${ext}",
+      "target": {
+        "target": "zip",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }
+    },
+    "nsis": {
+      "oneClick": false
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "directories": {
+      "app": "app",
+      "output": "dist"
+    },
+    "extraFiles": [
+      "node_modules/Frosch/frosch.min.js"
+    ],
+    "files": [
+      "**/*"
+    ],
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivanrey/Frosch.git"
+  },
+  "name": "frosch",
+  "nodejs": true,
+  "description": "Frosch software para juego de rana electrónica",
+  "single-instance": true,
+  "keywords": [
+    "rana",
+    "electronica",
+    "juego"
+  ],
+  "version": "1.4.4",
+  "main": "app/main.js",
+  "bugs": {
+    "url": "https://github.com/ivanrey/Frosch/issues"
+  },
+  "homepage": "https://github.com/ivanrey/Frosch",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "publish-dist": "electron-builder -lmw --publish always",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "Ivan Rey",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^11.5.0",
+    "electron-builder": "^22.7.0"
+  },
+  "engines": {
+    "yarn": ">= 1.0.0"
+  }
+}
